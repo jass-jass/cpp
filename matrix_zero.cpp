@@ -40,7 +40,17 @@ void set_zero(SIZE size, int zero_matrix[size.row][size.column], int matrix[100]
     {
         for(int j=0; j<size.column; j++)
         {
-            
+            if(!matrix[i][j])
+            {
+                for(int k=0; k<size.column; k++)
+                {
+                    zero_matrix[i][k] = 0;
+                }
+                for(int k=0; k<size.row; k++)
+                {
+                    zero_matrix[k][j] = 0;
+                }
+            }
         }
     }
 }
@@ -49,6 +59,7 @@ int main()
 {
     int matrix [100][100];
     SIZE size = input(matrix);
+    int zero_matrix[size.row][size.column];
     set_zero(size, zero_matrix, matrix);
     return 0;
 }
