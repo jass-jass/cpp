@@ -3,30 +3,52 @@
 
 using namespace std;
 
-void input(int matrix[][])
+typedef struct SIZE
 {
     int row, column;
+} SIZE;
+
+SIZE input(int matrix[100][100])
+{
+    SIZE size;
     string str;
     cin >> str;
-    for(int i=0; i++; i<(str.length())-1)
+    for(int i=0; i<(str.length()-1); i++)
     {
         if(str[i+2] == '\n')
         {
-            return;
+            break;
         }
-        if()
-        matrix[row][column] = 
+        if(str[i]==']')
+        {
+            size.row++;
+            continue;
+        }
+        if(str[i]>47 && str[i]<58)
+        {
+            matrix[size.row][size.column] = str[i] - 48;
+            size.column++;
+        }
+    }
+    return size;
+}
+
+void set_zero(SIZE size, int zero_matrix[size.row][size.column], int matrix[100][100])
+{
+    std::copy(matrix[0][0], matrix[0][0] + size.row*size.column, zero_matrix[0][0]);
+    for(int i=0; i<size.row; i++)
+    {
+        for(int j=0; j<size.column; j++)
+        {
+            
+        }
     }
 }
 
 int main()
 {
-    int matrix [][];
-    void input(matrix);
-    
-    
-    cout<<row <<endl;
-    cout<<column;
-    
+    int matrix [100][100];
+    SIZE size = input(matrix);
+    set_zero(size, zero_matrix, matrix);
     return 0;
 }
